@@ -50,8 +50,6 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_cran("ff")
-          remotes::install_cran("rcmdcheck")
-          remotes::install_cran("covr")
         shell: Rscript {0}
 
       - name: Session info
@@ -67,3 +65,8 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Try to load ff
+        run: |
+          library(ff)
+        shell: Rscript {0}
